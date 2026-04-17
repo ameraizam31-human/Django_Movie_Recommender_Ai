@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-j@7@z=25eihdqck8wpuiz%t_h^ez+l4i8_87fqlrah+9vc(auq
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CSRF_TRUSTED_ORIGINS = ['https://*.proxy.cognitiveclass.ai']
 
 # Application definition
 

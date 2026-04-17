@@ -4,19 +4,48 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <meta charset="UTF-8">
         <title>Personal Movie Recommendations</title>
+        <style>
+            .card-img-top {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+            }
+        </style>
     </head>
-    <!--Navigation bar-->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                      <a class="navbar-brand" href="#">Movie Recommendations</a>
-            </div>
-        </div>
-    </nav>
 
     <body>
-    <!--Render Movie list as card columns here -->
-    Movies to be shown here!
-    </body>
+        <nav class="navbar navbar-dark bg-dark mb-4">
+            <div class="container">
+                <a class="navbar-brand" href="#">Movie Recommendations</a>
+            </div>
+        </nav>
 
+        <div class="container">
+            <h2 class="mb-4">Recommended for You</h2>
+            <div class="card-columns">
+                {% for movie in movie_list %}
+                <div class="card shadow-sm">
+                    <img class="card-img-top" 
+                         src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" 
+                         alt="{{ movie.original_title }}">
+                    
+                    <div class="card-body bg-light">
+                        <h5 class="card-title text-primary">{{ movie.original_title }}</h5>
+                        <p class="card-text text-truncate" style="max-height: 100px; overflow: hidden;">
+                            {{ movie.overview }}
+                        </p>
+                        <hr>
+                        <p class="card-text"><b>Genres:</b> <small class="text-muted">{{ movie.genres }}</small></p>
+                        <p class="card-text"><b>Rating:</b> <span class="badge badge-warning">{{ movie.vote_average }}</span></p>
+                        <p class="card-text"><small class="text-secondary">Release Date: {{ movie.release_date }}</small></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <footer class="text-center mt-5 py-3 bg-light">
+            <p>&copy; 2026 I Setel Solutions - AI Movie Recommender</p>
+        </footer>
+    </body>
 </html>
